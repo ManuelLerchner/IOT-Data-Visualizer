@@ -37,7 +37,7 @@ export default function RangeSelector({
           format="DD/MM/YYYY"
         />
       </div>
-      <div className="flex flex-row items-center gap-4">
+      <div className="flex flex-row items-center gap-4 overflow-x-auto p-2">
         <button
           className="btn btn-sm btn-primary rounded-2xl bg-blue-500 hover:bg-blue-700 text-white p-2 font-semibold shadow-md"
           onClick={() => {
