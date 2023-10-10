@@ -61,7 +61,7 @@ const options = {
       time: {
         unit: "hour",
         displayFormats: {
-          hour: "hh:mm",
+          hour: "HH:mm",
         },
       },
     },

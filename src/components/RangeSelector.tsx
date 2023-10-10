@@ -37,15 +37,37 @@ export default function RangeSelector({
           format="DD/MM/YYYY"
         />
       </div>
-      <div className="flex flex-row items-center gap-4 overflow-x-auto p-2">
+      <div className="flex flex-row items-center gap-4 overflow-x-auto mt-2">
         <button
-          className="btn btn-sm btn-primary rounded-2xl bg-blue-500 hover:bg-blue-700 text-white p-2 font-semibold shadow-md"
+          className="btn btn-sm btn-success rounded-2xl bg-green-500 hover:bg-green-700 text-white p-2 font-semibold shadow-md"
           onClick={() => {
-            setFromDate(dayjs().subtract(1, "day"));
+            const currentFromDate = fromDate;
+            setFromDate(currentFromDate.subtract(1, "day"));
+            setToDate(currentFromDate.subtract(1, "day"));
+          }}
+        >
+          -1 day
+        </button>
+
+        <button
+          className="btn btn-sm btn-success rounded-2xl bg-green-500 hover:bg-green-700 text-white p-2 font-semibold shadow-md"
+          onClick={() => {
+            setFromDate(dayjs());
             setToDate(dayjs());
           }}
         >
           Today
+        </button>
+
+        <button
+          className="btn btn-sm btn-success rounded-2xl bg-green-500 hover:bg-green-700 text-white p-2 font-semibold shadow-md"
+          onClick={() => {
+            const currentToDate = toDate;
+            setFromDate(currentToDate.add(1, "day"));
+            setToDate(currentToDate.add(1, "day"));
+          }}
+        >
+          +1 day
         </button>
 
         <button
@@ -55,27 +77,7 @@ export default function RangeSelector({
             setToDate(dayjs());
           }}
         >
-          Last week
-        </button>
-
-        <button
-          className="btn btn-sm btn-primary rounded-2xl bg-blue-500 hover:bg-blue-700 text-white p-2 font-semibold shadow-md"
-          onClick={() => {
-            setFromDate(dayjs().subtract(1, "month"));
-            setToDate(dayjs());
-          }}
-        >
-          Last month
-        </button>
-
-        <button
-          className="btn btn-sm btn-primary rounded-2xl bg-blue-500 hover:bg-blue-700 text-white p-2 font-semibold shadow-md"
-          onClick={() => {
-            setFromDate(dayjs().subtract(1, "year"));
-            setToDate(dayjs());
-          }}
-        >
-          Last year
+          This week
         </button>
 
         <button
@@ -88,6 +90,20 @@ export default function RangeSelector({
           All time
         </button>
       </div>
+
+      {/* warning if date is in future */}
+      {dayjs().isBefore(fromDate) && (
+        <div className="flex flex-row items-center gap-4">
+          <p className="text-red-500">Warning: From date is in future</p>
+        </div>
+      )}
+
+      {/* warning if from date is after to date */}
+      {fromDate.isAfter(toDate) && (
+        <div className="flex flex-row items-center gap-4">
+          <p className="text-red-500">Warning: From date is after to date</p>
+        </div>
+      )}
     </div>
   );
 }

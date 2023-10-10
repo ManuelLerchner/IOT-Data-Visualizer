@@ -9,8 +9,12 @@ import { fetchAirData } from "../services/fetchAirData";
 
 import { createPlotData } from "../services/createPlotData";
 import dayjs from "../services/dayjs";
+import DataStats from "../components/DataStats";
+import { AirQualityData } from "../models/AirQualityData";
 
 function AirQuality() {
+  const [data, setData] = useState<AirQualityData[]>([]);
+
   const [combinedChartData, setCombinedChartData] = useState<any>();
   const [individualChartData, setIndividualChartData] = useState<any[]>([]);
 
@@ -25,6 +29,7 @@ function AirQuality() {
 
       const { combined, individual } = createPlotData(data);
 
+      setData(data);
       setCombinedChartData(combined);
       setIndividualChartData(individual);
     };
@@ -55,22 +60,27 @@ function AirQuality() {
       )}
 
       {combinedChartData && (
-        <>
+        <div className="p-2">
+          <DataStats data={data} />
+
           <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-10 p-10 items-center">
             {individualChartData.map(({ data, title }, index) => (
-              <div className="flex w-full h-full" key={index}>
+              <div
+                className="flex w-full h-full border rounded-lg border-stone-500 p-2"
+                key={index}
+              >
                 <LineChart chartData={data} title={title} />
               </div>
             ))}
           </div>
 
-          <div className="flex flex-col items-center w-full h-full">
+          <div className="flex flex-col items-center w-full h-full border rounded-lg border-stone-500 p-2">
             <LineChart
               chartData={combinedChartData.data}
               title={combinedChartData.title}
             />
           </div>
-        </>
+        </div>
       )}
     </LocalizationProvider>
   );
