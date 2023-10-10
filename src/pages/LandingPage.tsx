@@ -18,13 +18,14 @@ export default function LandingPage() {
 
       <p> Currently there are the following devices:</p>
 
-      <table className="table-auto">
+      <table className="table-auto my-4">
         <thead>
           <tr>
-            <th className="px-4 py-2">Device Name</th>
-            <th className="px-4 py-2">Image</th>
-            <th className="px-4 py-2">Collected Datatypes</th>
-            <th className="px-4 py-2">Dashboard</th>
+            <th className="border px-4 py-2">Device Name</th>
+            <th className="border px-4 py-2">Image</th>
+            <th className="border px-4 py-2">Collected Datatypes</th>
+            <th className="border px-4 py-2">Dashboard</th>
+            <th className="border px-4 py-2">Description</th>
           </tr>
         </thead>
         <tbody>
@@ -54,6 +55,21 @@ export default function LandingPage() {
               >
                 Air Quality Dashboard
               </a>
+            </td>
+            <td className="border px-4 py-2">
+              <p className="text-sm">
+                A raspberry periodically fetches the data from amazon and stores
+                it in a database.
+                <br />
+                The{" "}
+                <a
+                  href="https://github.com/ManuelLerchner/Amazon-Smart-Air-Quality-Monitor-Logger"
+                  className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600"
+                >
+                  script
+                </a>{" "}
+                which does all the heavy lifting is written in python.
+              </p>
             </td>
           </tr>
         </tbody>
