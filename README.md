@@ -1,46 +1,17 @@
-# Getting Started with Create React App
+# IOT - Data Visualizer
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
 
-## Available Scripts
+This website is a data visualizer for all my IOT devices. The purpose of this website is to display all the collected data in a nice and easy to read way. 
 
-In the project directory, you can run:
+The website is heavily based on the Chart.js library to create the graphs. All the data gets fetched via a REST API from my Backend. 
 
-### `npm start`
+The data is stored in a MongoDB database.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Screenshots
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+![Landing Page](https://github.com/ManuelLerchner/IOT-Data-Visualizer/assets/54124311/d279aacb-fb97-4030-87e6-8c54a463d908)
 
-### `npm test`
+![Air Quality Dashboard](https://github.com/ManuelLerchner/IOT-Data-Visualizer/assets/54124311/83d6cfab-dfb3-4ab6-a47d-01da27df2802)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+![Air Data Charts](https://github.com/ManuelLerchner/IOT-Data-Visualizer/assets/54124311/1d7a5b93-7745-4b5a-8c57-ce4ac415e0d6)
