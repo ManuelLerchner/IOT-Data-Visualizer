@@ -1,23 +1,53 @@
 import React from "react";
-import Chart from "chart.js/auto";
-
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  LineController,
+  Title,
+  Tooltip,
+  Legend,
+  TimeScale,
+  Decimation,
+} from "chart.js";
+import type { DecimationOptions } from "chart.js";
 import "chartjs-adapter-moment";
-import { CategoryScale } from "chart.js";
-import { Line } from "react-chartjs-2";
+import Annotation from "chartjs-plugin-annotation";
 
-Chart.register(CategoryScale);
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  LineController,
+  Title,
+  Tooltip,
+  Legend,
+  TimeScale,
+  Decimation,
+  Annotation
+);
 
-const options = {
+function average(values: number[]) {
+  return values.reduce((a: number, b: number) => a + b, 0) / values.length;
+}
+
+const options: any = {
   tooltips: {
     mode: "index",
     intersect: false,
   },
   responsive: true,
+  maintainAspectRatio: false,
+  normalized: true,
+  parsing: false,
   interaction: {
-    mode: "index",
+    mode: "nearest",
+    axis: "x",
     intersect: false,
   },
-  stacked: false,
   plugins: {
     tooltip: {
       callbacks: {
@@ -54,6 +84,40 @@ const options = {
     legend: {
       position: "bottom",
     },
+    decimation: {
+      enabled: true,
+      algorithm: "lttb",
+    },
+    annotation: {
+      annotations: {
+        line1: {
+          display: (ctx: any) => ctx.chart.data.datasets.length == 1,
+          type: "line",
+          borderColor: "black",
+          borderDash: [6, 6],
+          borderDashOffset: 0,
+          borderWidth: 2,
+
+          scaleID: "y",
+          value: (ctx: any) =>
+            average(ctx.chart.data.datasets[0].data.map((v: any) => v.y)),
+
+          label: {
+            display: true,
+            content: (ctx: any) =>
+              average(
+                ctx.chart.data.datasets[0].data.map((v: any) => v.y)
+              ).toFixed(2) +
+              " " +
+              ctx.chart.data.datasets[0].unit,
+            position: "end",
+            font: {
+              size: 10,
+            },
+          },
+        },
+      },
+    },
   },
   scales: {
     x: {
@@ -69,25 +133,38 @@ const options = {
 };
 
 export default function LineChart({
-  chartData,
+  dataset,
   title,
 }: {
-  chartData: any;
+  dataset: any;
   title: string;
 }) {
-  const curr_options = {
-    ...options,
-    plugins: {
-      ...options.plugins,
-      title: {
-        display: true,
-        text: title,
-        font: {
-          size: 20,
+  const canvasRef = React.useRef<any>(undefined);
+  const chartRef = React.useRef<any>(undefined);
+
+  React.useEffect(() => {
+    chartRef.current = new ChartJS(canvasRef.current, {
+      type: "line",
+      data: dataset,
+      options: {
+        ...options,
+        plugins: {
+          ...options.plugins,
+          title: {
+            display: true,
+            text: title,
+            font: {
+              size: 20,
+            },
+          },
         },
       },
-    },
-  };
+    });
 
-  return <Line data={chartData} options={curr_options as any} />;
+    return () => {
+      chartRef.current.destroy();
+    };
+  }, [dataset]);
+
+  return <canvas ref={canvasRef} style={{ width: "100%" }} />;
 }

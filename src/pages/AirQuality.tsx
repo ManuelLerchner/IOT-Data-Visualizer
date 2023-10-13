@@ -11,9 +11,10 @@ import { createPlotData } from "../services/createPlotData";
 import dayjs from "../services/dayjs";
 import DataStats from "../components/DataStats";
 import { AirQualityData } from "../models/AirQualityData";
+import ChartBox from "../components/ChartBox";
 
 function AirQuality() {
-  const [data, setData] = useState<AirQualityData[]>([]);
+  const [data, setData] = useState<AirQualityData[] | undefined>(undefined);
 
   const [combinedChartData, setCombinedChartData] = useState<any>();
   const [individualChartData, setIndividualChartData] = useState<any[]>([]);
@@ -59,28 +60,32 @@ function AirQuality() {
         </p>
       )}
 
-      {combinedChartData && (
-        <div className="p-2">
+      {data != undefined && (
+        <>
           <DataStats data={data} />
+          <div className="p-2 mt-4">
+            <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-8 px-0 lg:px-10 items-center">
+              {individualChartData.map(({ data, title }, index) => (
+                <ChartBox
+                  data={data}
+                  title={title}
+                  key={index}
+                  fromDateTime={fromDateTime}
+                  toDateTime={toDateTime}
+                />
+              ))}
+            </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-10 p-10 items-center">
-            {individualChartData.map(({ data, title }, index) => (
-              <div
-                className="flex w-full h-full border rounded-lg border-stone-500 p-2"
-                key={index}
-              >
-                <LineChart chartData={data} title={title} />
-              </div>
-            ))}
+            <div className="h-screen w-full py-6">
+              <ChartBox
+                data={combinedChartData.data}
+                title={combinedChartData.title}
+                fromDateTime={fromDateTime}
+                toDateTime={toDateTime}
+              />
+            </div>
           </div>
-
-          <div className="flex flex-col items-center w-full h-full border rounded-lg border-stone-500 p-2">
-            <LineChart
-              chartData={combinedChartData.data}
-              title={combinedChartData.title}
-            />
-          </div>
-        </div>
+        </>
       )}
     </LocalizationProvider>
   );

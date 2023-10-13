@@ -6,7 +6,7 @@ export default function RowTable({
   unit,
 }: {
   title: string;
-  value: number;
+  value: number | string;
   unit: string;
 }) {
   return (
@@ -16,13 +16,19 @@ export default function RowTable({
       </td>
       <td className="border px-4 py-2">
         <p className="font-bold">
-          {isNaN(value)
-            ? "N/A"
-            : new Intl.NumberFormat("en-US", {
-                maximumFractionDigits: 2,
-              }).format(value) +
-              " " +
-              unit}
+          {typeof value === "string" && value + " " + unit}
+
+          {typeof value === "number" && (
+            <>
+              {isNaN(value)
+                ? "N/A"
+                : new Intl.NumberFormat("en-US", {
+                    maximumFractionDigits: 2,
+                  }).format(value) +
+                  " " +
+                  unit}
+            </>
+          )}
         </p>
       </td>
     </tr>

@@ -4,7 +4,10 @@ import { AirQualityData } from "../models/AirQualityData";
 // const API_URL = "";
 const API_URL = "http://localhost:4000/airquality/api/";
 
-export async function fetchAirData(fromDate: Dayjs, toDate: Dayjs) {
+export async function fetchAirData(
+  fromDate: Dayjs,
+  toDate: Dayjs
+): Promise<AirQualityData[]> {
   const params = new URLSearchParams({
     from: fromDate
       .set("hour", 0)

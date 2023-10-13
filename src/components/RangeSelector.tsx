@@ -15,7 +15,7 @@ export default function RangeSelector({
   setToDate: (date: Dayjs) => void;
 }) {
   return (
-    <div className="flex flex-col p-4 gap-4  items-center ">
+    <div className="flex flex-col my-4 gap-4 items-center px-2">
       <div className="flex flex-row items-center">
         <DatePicker
           label="From"
@@ -26,7 +26,7 @@ export default function RangeSelector({
           format="DD/MM/YYYY"
         />
 
-        <p className="mx-10">-</p>
+        <p className="mx-10 font-bold text-lg">-</p>
 
         <DatePicker
           label="To"
@@ -37,7 +37,7 @@ export default function RangeSelector({
           format="DD/MM/YYYY"
         />
       </div>
-      <div className="flex flex-row items-center gap-4 overflow-x-auto mt-2">
+      <div className="flex flex-row items-center gap-4 overflow-x-auto py-2">
         <button
           className="btn btn-sm btn-success rounded-2xl bg-green-500 hover:bg-green-700 text-white p-2 font-semibold shadow-md"
           onClick={() => {
