@@ -10,8 +10,10 @@ The data is stored in a MongoDB database.
 
 ## Screenshots
 
-![Landing Page](https://github.com/ManuelLerchner/IOT-Data-Visualizer/assets/54124311/d279aacb-fb97-4030-87e6-8c54a463d908)
+![Landing Page](https://github.com/ManuelLerchner/IOT-Data-Visualizer/assets/54124311/b0d0809b-bdce-4e1e-8b65-3e57c0c356b1)
 
-![Air Quality Dashboard](https://github.com/ManuelLerchner/IOT-Data-Visualizer/assets/54124311/83d6cfab-dfb3-4ab6-a47d-01da27df2802)
 
-![Air Data Charts](https://github.com/ManuelLerchner/IOT-Data-Visualizer/assets/54124311/1d7a5b93-7745-4b5a-8c57-ce4ac415e0d6)
+![Aggregated Stats](https://github.com/ManuelLerchner/IOT-Data-Visualizer/assets/54124311/a0481248-1e50-4ac4-97a5-634df2a0ca17)
+
+
+![Charts](https://github.com/ManuelLerchner/IOT-Data-Visualizer/assets/54124311/6a89a978-c20a-46f4-9869-2632aa6c4361)
