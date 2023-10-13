@@ -1,4 +1,3 @@
-import exp from "constants";
 import { AirQualityData } from "../models/AirQualityData";
 
 export function convert2csv(data: AirQualityData[]) {

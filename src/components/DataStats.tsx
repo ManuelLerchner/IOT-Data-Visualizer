@@ -1,12 +1,11 @@
-import React from "react";
+import dayjs from "dayjs";
 import { AirQualityData } from "../models/AirQualityData";
-import RowTable from "./RowTable";
 import {
   convert2csv,
   convert2json,
   downloadFile,
 } from "../services/convert2csv";
-import dayjs from "dayjs";
+import RowTable from "./RowTable";
 
 export default function DataStats({ data }: { data: AirQualityData[] }) {
   return (

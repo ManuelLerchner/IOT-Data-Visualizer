@@ -1,7 +1,4 @@
-import { ChartArea } from "chart.js";
 import { AirQualityData } from "../models/AirQualityData";
-import { title } from "process";
-import { Dayjs } from "dayjs";
 
 export function createPlotData(data: AirQualityData[]) {
   const temperature = {

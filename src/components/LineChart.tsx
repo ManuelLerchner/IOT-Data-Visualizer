@@ -1,20 +1,19 @@
-import React from "react";
 import {
-  Chart as ChartJS,
   CategoryScale,
+  Chart as ChartJS,
+  Decimation,
+  Legend,
+  LineController,
+  LineElement,
   LinearScale,
   PointElement,
-  LineElement,
-  LineController,
+  TimeScale,
   Title,
   Tooltip,
-  Legend,
-  TimeScale,
-  Decimation,
 } from "chart.js";
-import type { DecimationOptions } from "chart.js";
 import "chartjs-adapter-moment";
 import Annotation from "chartjs-plugin-annotation";
+import React from "react";
 
 ChartJS.register(
   CategoryScale,

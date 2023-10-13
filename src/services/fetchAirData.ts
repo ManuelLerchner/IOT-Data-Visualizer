@@ -1,9 +1,6 @@
 import { Dayjs } from "dayjs";
 import { AirQualityData } from "../models/AirQualityData";
 
-// const API_URL = "";
-const API_URL = "http://localhost:4000/airquality/api/";
-
 export async function fetchAirData(
   fromDate: Dayjs,
   toDate: Dayjs

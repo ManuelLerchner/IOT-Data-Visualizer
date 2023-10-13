@@ -1,17 +1,16 @@
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { useEffect, useState } from "react";
-import LineChart from "../components/LineChart";
 import RangeSelector from "../components/RangeSelector";
 
 import { Dayjs } from "dayjs";
 import { fetchAirData } from "../services/fetchAirData";
 
-import { createPlotData } from "../services/createPlotData";
-import dayjs from "../services/dayjs";
+import ChartBox from "../components/ChartBox";
 import DataStats from "../components/DataStats";
 import { AirQualityData } from "../models/AirQualityData";
-import ChartBox from "../components/ChartBox";
+import { createPlotData } from "../services/createPlotData";
+import dayjs from "../services/dayjs";
 
 function AirQuality() {
   const [data, setData] = useState<AirQualityData[] | undefined>(undefined);
