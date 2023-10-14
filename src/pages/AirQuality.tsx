@@ -39,7 +39,7 @@ function AirQuality() {
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <h1 className="text-center text-3xl font-bold my-8">Air Quality Data</h1>
+      <h1 className="text-center text-3xl font-bold my-8">Air Quality</h1>
 
       <h2 className="text-center text-xl font-bold my-4">
         From {fromDateTime.format("DD/MM/YYYY")} to{" "}
@@ -62,7 +62,7 @@ function AirQuality() {
       {data != undefined && (
         <>
           <DataStats data={data} />
-          <div className="p-2 mt-4">
+          <div className="mt-4">
             <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-8 px-0 lg:px-10 items-center">
               {individualChartData.map(({ data, title }, index) => (
                 <ChartBox
