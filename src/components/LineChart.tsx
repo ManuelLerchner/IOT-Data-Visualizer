@@ -90,7 +90,7 @@ const options: any = {
     annotation: {
       annotations: {
         line1: {
-          display: (ctx: any) => ctx.chart.data.datasets.length == 1,
+          display: (ctx: any) => ctx.chart.data.datasets.length === 1,
           type: "line",
           borderColor: "black",
           borderDash: [6, 6],
@@ -163,7 +163,7 @@ export default function LineChart({
     return () => {
       chartRef.current.destroy();
     };
-  }, [dataset]);
+  }, [dataset, title]);
 
   return <canvas ref={canvasRef} style={{ width: "100%" }} />;
 }

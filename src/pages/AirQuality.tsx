@@ -59,7 +59,7 @@ function AirQuality() {
         </p>
       )}
 
-      {data != undefined && (
+      {data !== undefined && (
         <>
           <DataStats data={data} />
           <div className="mt-4">
