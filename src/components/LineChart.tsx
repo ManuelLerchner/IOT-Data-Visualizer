@@ -47,6 +47,13 @@ const options: any = {
     axis: "x",
     intersect: false,
   },
+  datasets: {
+    line: {
+      cubicInterpolationMode: "monotone",
+      borderWidth: 1,
+      pointRadius: 0,
+    },
+  },
   plugins: {
     tooltip: {
       callbacks: {
@@ -122,9 +129,8 @@ const options: any = {
     x: {
       type: "time",
       time: {
-        unit: "hour",
         displayFormats: {
-          hour: "HH:mm",
+          hour: "dd HH:mm",
         },
       },
     },
@@ -155,6 +161,11 @@ export default function LineChart({
             font: {
               size: 20,
             },
+          },
+        },
+        elements: {
+          point: {
+            radius: 0,
           },
         },
       },

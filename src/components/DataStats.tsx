@@ -22,13 +22,19 @@ export default function DataStats({ data }: { data: AirQualityData[] }) {
 
           <RowTable
             title="From"
-            value={dayjs(data[0].date).format("DD/MM/YYYY")}
+            value={
+              data.length > 0 ? dayjs(data[0].date).format("DD/MM/YYYY") : "-"
+            }
             unit=""
           />
 
           <RowTable
             title="To"
-            value={dayjs(data[data.length - 1].date).format("DD/MM/YYYY")}
+            value={
+              data.length > 0
+                ? dayjs(data[data.length - 1].date).format("DD/MM/YYYY")
+                : "-"
+            }
             unit=""
           />
 
@@ -39,7 +45,7 @@ export default function DataStats({ data }: { data: AirQualityData[] }) {
                 ? ((data[data.length - 1].date as any) -
                     (data[0].date as any)) /
                   86400000
-                : 0
+                : "-"
             }
             unit="days"
           />

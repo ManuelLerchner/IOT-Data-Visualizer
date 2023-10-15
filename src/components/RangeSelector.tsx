@@ -40,9 +40,9 @@ export default function RangeSelector({
         <button
           className="btn btn-sm btn-success rounded-2xl bg-green-500 hover:bg-green-700 text-white p-2 font-semibold shadow-md"
           onClick={() => {
-            const currentFromDate = fromDate;
-            setFromDate(currentFromDate.subtract(1, "day"));
-            setToDate(currentFromDate.subtract(1, "day"));
+            const currentToDate = toDate;
+            setFromDate(currentToDate.subtract(1, "day"));
+            setToDate(currentToDate.subtract(1, "day"));
           }}
         >
           -1 day
@@ -61,12 +61,23 @@ export default function RangeSelector({
         <button
           className="btn btn-sm btn-success rounded-2xl bg-green-500 hover:bg-green-700 text-white p-2 font-semibold shadow-md"
           onClick={() => {
-            const currentToDate = toDate;
-            setFromDate(currentToDate.add(1, "day"));
-            setToDate(currentToDate.add(1, "day"));
+            const currentFromDate = fromDate;
+            setFromDate(currentFromDate.add(1, "day"));
+            setToDate(currentFromDate.add(1, "day"));
           }}
         >
           +1 day
+        </button>
+
+        <button
+          className="btn btn-sm btn-primary rounded-2xl  bg-blue-500 hover:bg-blue-700 text-white p-2 font-semibold shadow-md"
+          onClick={() => {
+            const currentToDate = toDate;
+            setFromDate(currentToDate.subtract(2, "week"));
+            setToDate(currentToDate.subtract(1, "week"));
+          }}
+        >
+          -1 Week
         </button>
 
         <button
@@ -80,13 +91,14 @@ export default function RangeSelector({
         </button>
 
         <button
-          className="btn btn-sm btn-primary rounded-2xl bg-blue-500 hover:bg-blue-700 text-white p-2 font-semibold shadow-md"
+          className="btn btn-sm btn-primary rounded-2xl  bg-blue-500 hover:bg-blue-700 text-white p-2 font-semibold shadow-md"
           onClick={() => {
-            setFromDate(dayjs().subtract(10, "year"));
-            setToDate(dayjs());
+            const currentFromDate = fromDate;
+            setFromDate(currentFromDate.add(1, "week"));
+            setToDate(currentFromDate.add(2, "week"));
           }}
         >
-          All time
+          +1 Week
         </button>
       </div>
 
